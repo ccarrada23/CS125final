@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/enterText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Text" />
+
+    <Button
+        android:id="@+id/enterBlank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Blank" />
+
+    <TextView
+        android:id="@+id/currentLib"
+        android:layout_width="match_parent"
+        android:layout_height="586dp"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FINISH" />
+</LinearLayout>
