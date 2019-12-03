@@ -3,4 +3,30 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/completedTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Your Completed Mad Lib!"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/completedMadLib"
+        android:layout_width="match_parent"
+        android:layout_height="457dp"
+        android:text="Mad Lib" />
+
+    <Button
+        android:id="@+id/saveExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save and Exit" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exit (Without Saving)" />
+
 </LinearLayout>

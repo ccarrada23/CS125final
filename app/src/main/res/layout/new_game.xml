@@ -18,8 +18,8 @@
     <TextView
         android:id="@+id/currentLib"
         android:layout_width="match_parent"
-        android:layout_height="586dp"
-        android:text="TextView" />
+        android:layout_height="478dp"
+        android:text="Your Mad Lib will appear here" />
 
     <Button
         android:id="@+id/finish"

@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NewGame" />
+        <activity android:name=".FillInGame" />
+        <activity android:name=".CompletedGame" />
+        <activity android:name=".PastGames" />
     </application>
 
 </manifest>
