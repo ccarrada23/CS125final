@@ -18,19 +18,29 @@ public class FillInGame extends AppCompatActivity {
         setContentView(R.layout.fill_in_game);
         Button previous = findViewById(R.id.previous);
         Button next = findViewById(R.id.next);
-        previous.setVisibility(View.GONE);
+        reloadPage();
         previous.setOnClickListener(unused -> goToPrevious());
         next.setOnClickListener(unused -> goToNext());
     }
 
-    public void goToPrevious() {
+    public void reloadPage() {
         Button previous = findViewById(R.id.previous);
-        blankIndex--;
+        Button next = findViewById(R.id.next);
         if (blankIndex == 0) {
             previous.setVisibility(View.GONE);
         } else {
             previous.setVisibility(View.VISIBLE);
         }
+        if (blankIndex == numBlanks) {
+            next.setText("Finish");
+        } else {
+            next.setText("Next");
+        }
+    }
+
+    public void goToPrevious() {
+        blankIndex--;
+        reloadPage();
     }
 
     public void goToNext() {
@@ -39,10 +49,7 @@ public class FillInGame extends AppCompatActivity {
             startActivity(intent);
         } else {
             blankIndex++;
-            if(blankIndex == numBlanks) {
-                Button next = findViewById(R.id.next);
-                next.setText("Finish");
-            }
+            reloadPage();
         }
     }
 }
