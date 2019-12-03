@@ -20,7 +20,7 @@ public class FillInGame extends AppCompatActivity {
         Button next = findViewById(R.id.next);
         previous.setVisibility(View.GONE);
         previous.setOnClickListener(unused -> goToPrevious());
-        next.setOnClickListener(unused -> goToNext(savedInstanceState));
+        next.setOnClickListener(unused -> goToNext());
     }
 
     public void goToPrevious() {
@@ -33,7 +33,7 @@ public class FillInGame extends AppCompatActivity {
         }
     }
 
-    public void goToNext(Bundle savedInstanceState) {
+    public void goToNext() {
         if(blankIndex == numBlanks) {
             Intent intent = new Intent(this, CompletedGame.class);
             startActivity(intent);
