@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button newGame = findViewById(R.id.newGame);
-        newGame.setOnClickListener(unused -> launchNewGame());
+        newGame.setOnClickListener(unused -> System.out.println("New Game Screen here"));
         Button pastGames = findViewById(R.id.pastGames);
-        pastGames.setOnClickListener(unused -> launchPastGames());
+        pastGames.setOnClickListener(unused -> System.out.println("Past Game screen here"));
     }
 
     public void launchNewGame() {
