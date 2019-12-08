@@ -1,12 +1,15 @@
 package com.example.cs125finalproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NewGame extends AppCompatActivity {
@@ -14,6 +17,8 @@ public class NewGame extends AppCompatActivity {
     public ArrayList<String> totalLib = new ArrayList<>();
     public ArrayList<String> blanksToEnter = new ArrayList<>();
     public String currentLib = new String();
+    public String textEntered = new String();
+    public String blankEntered = new String();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,20 +33,62 @@ public class NewGame extends AppCompatActivity {
     }
 
     public void enterText() {
-        String textEntered = new String(); //trim when recieved.
-        totalLib.add(textEntered);
-        currentLib = currentLib + " " + textEntered;
-        TextView currentLibText = findViewById(R.id.currentLib);
-        currentLibText.setText(currentLib);
+        AlertDialog.Builder text = new AlertDialog.Builder(this);
+        text.setTitle("Enter Text");
+
+        // Input within AlertDialog
+        EditText input = new EditText(this);
+        text.setView(input);
+
+        // Buttons within AlertDialog
+        text.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                textEntered = input.getText().toString();
+                textEntered.trim();
+                totalLib.add(textEntered);
+                currentLib = currentLib + " " + textEntered;
+                TextView currentLibText = findViewById(R.id.currentLib);
+                currentLibText.setText(currentLib);
+            }
+        });
+        text.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        text.show();
     }
 
     public void enterBlank() {
-        String blankEntered = new String(); //trim when recieved.
-        totalLib.add("BLANK");
-        blanksToEnter.add(blankEntered);
-        currentLib = currentLib + " [" + blankEntered + "]";
-        TextView currentLibText = findViewById(R.id.currentLib);
-        currentLibText.setText(currentLib);
+        AlertDialog.Builder text = new AlertDialog.Builder(this);
+        text.setTitle("Enter Text");
+
+        // Input within AlertDialog
+        EditText input = new EditText(this);
+        text.setView(input);
+
+        // Buttons within AlertDialog
+        text.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                blankEntered = input.getText().toString();
+                blankEntered.trim();
+                totalLib.add("BLANK");
+                blanksToEnter.add(blankEntered);
+                currentLib = currentLib + " [" + blankEntered + "]";
+                TextView currentLibText = findViewById(R.id.currentLib);
+                currentLibText.setText(currentLib);
+            }
+        });
+        text.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        text.show();
     }
 
     public void launchFillInGame() {
