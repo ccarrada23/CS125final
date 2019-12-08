@@ -44,8 +44,7 @@ public class NewGame extends AppCompatActivity {
         text.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                textEntered = input.getText().toString();
-                textEntered.trim();
+                textEntered = input.getText().toString().trim();
                 totalLib.add(textEntered);
                 currentLib = currentLib + " " + textEntered;
                 TextView currentLibText = findViewById(R.id.currentLib);
@@ -63,7 +62,7 @@ public class NewGame extends AppCompatActivity {
 
     public void enterBlank() {
         AlertDialog.Builder text = new AlertDialog.Builder(this);
-        text.setTitle("Enter Text");
+        text.setTitle("Enter a Type of Word");
 
         // Input within AlertDialog
         EditText input = new EditText(this);
@@ -73,8 +72,7 @@ public class NewGame extends AppCompatActivity {
         text.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                blankEntered = input.getText().toString();
-                blankEntered.trim();
+                blankEntered = input.getText().toString().trim();
                 totalLib.add("BLANK");
                 blanksToEnter.add(blankEntered);
                 currentLib = currentLib + " [" + blankEntered + "]";

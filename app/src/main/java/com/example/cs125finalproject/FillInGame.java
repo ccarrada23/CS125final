@@ -14,14 +14,22 @@ public class FillInGame extends AppCompatActivity {
 
     protected int numBlanks;
     protected int blankIndex = 0;
-    protected ArrayList<String> blanksEntered = new ArrayList<>();
+    protected ArrayList<String> blanksToEnter;
+    protected ArrayList<String> blanksEntered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        numBlanks = intent.getStringArrayListExtra("blanksToEnter").size();
-        blanksEntered = intent.getStringArrayListExtra("blanksToEnter");
+        blanksToEnter = intent.getStringArrayListExtra("blanksToEnter");
+        numBlanks = blanksToEnter.size();
+        ArrayList<String> proxy = new ArrayList<>();
+        for(int i = 0; i < numBlanks; i++) {
+            proxy.add(blanksToEnter.get(i));
+        }
+        blanksEntered = proxy;
+        System.out.println(blanksToEnter.size());
+        System.out.println(blanksEntered.size());
         setContentView(R.layout.fill_in_game);
         Button previous = findViewById(R.id.previous);
         Button next = findViewById(R.id.next);
@@ -43,11 +51,12 @@ public class FillInGame extends AppCompatActivity {
         } else {
             next.setText("Next");
         }
+        //Intent intent = getIntent();
+        //blanksToEnter = intent.getStringArrayListExtra("blanksToEnter");
         EditText enterBlank = findViewById(R.id.editText);
         enterBlank.setText("");
-        Intent intent = getIntent();
-        String blankType = intent.getStringArrayListExtra("blanksToEnter").get(blankIndex);
-        enterBlank.setHint("Enter a " + blankType);
+        String blankType = "Enter a " + blanksToEnter.get(blankIndex);
+        enterBlank.setHint(blankType);
     }
 
     public void goToPrevious() {
@@ -59,6 +68,9 @@ public class FillInGame extends AppCompatActivity {
     }
 
     public void goToNext() {
+        EditText enterBlank = findViewById(R.id.editText);
+        String blankEntered = enterBlank.getText().toString();
+        blanksEntered.set(blankIndex, blankEntered);
         if(blankIndex == numBlanks - 1) {
             Intent oldIntent = getIntent();
             Intent intent = new Intent(this, CompletedGame.class);
@@ -66,9 +78,6 @@ public class FillInGame extends AppCompatActivity {
             intent.putExtra("totalLib", oldIntent.getStringArrayListExtra("totalLib"));
             startActivity(intent);
         } else {
-            EditText enterBlank = findViewById(R.id.editText);
-            String blankEntered = enterBlank.getText().toString();
-            blanksEntered.set(blankIndex, blankEntered);
             blankIndex++;
             reloadPage();
         }
