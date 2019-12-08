@@ -51,8 +51,6 @@ public class FillInGame extends AppCompatActivity {
         } else {
             next.setText("Next");
         }
-        //Intent intent = getIntent();
-        //blanksToEnter = intent.getStringArrayListExtra("blanksToEnter");
         EditText enterBlank = findViewById(R.id.editText);
         enterBlank.setText("");
         String blankType = "Enter a " + blanksToEnter.get(blankIndex);
