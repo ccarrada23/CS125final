@@ -90,9 +90,15 @@ public class NewGame extends AppCompatActivity {
     }
 
     public void launchFillInGame() {
-        Intent intent = new Intent(this, FillInGame.class);
-        intent.putExtra("totalLib", totalLib);
-        intent.putExtra("blanksToEnter", blanksToEnter);
-        startActivity(intent);
+        System.out.println(blanksToEnter.size());
+        if (blanksToEnter.size() == 0) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, FillInGame.class);
+            intent.putExtra("totalLib", totalLib);
+            intent.putExtra("blanksToEnter", blanksToEnter);
+            startActivity(intent);
+        }
     }
 }
