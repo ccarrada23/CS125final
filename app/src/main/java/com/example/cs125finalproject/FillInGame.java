@@ -52,14 +52,18 @@ public class FillInGame extends AppCompatActivity {
             next.setText("Next");
         }
         EditText enterBlank = findViewById(R.id.editText);
-        enterBlank.setText("");
+        if (blanksToEnter.get(blankIndex).equals(blanksEntered.get(blankIndex))) {
+            enterBlank.setText("");
+        } else {
+            enterBlank.setText(blanksEntered.get(blankIndex));
+        }
         String blankType = "Enter a " + blanksToEnter.get(blankIndex);
         enterBlank.setHint(blankType);
     }
 
     public void goToPrevious() {
         EditText enterBlank = findViewById(R.id.editText);
-        String blankEntered = enterBlank.getText().toString();
+        String blankEntered = enterBlank.getText().toString().trim();
         blanksEntered.set(blankIndex, blankEntered);
         blankIndex--;
         reloadPage();
@@ -67,7 +71,7 @@ public class FillInGame extends AppCompatActivity {
 
     public void goToNext() {
         EditText enterBlank = findViewById(R.id.editText);
-        String blankEntered = enterBlank.getText().toString();
+        String blankEntered = enterBlank.getText().toString().trim();
         blanksEntered.set(blankIndex, blankEntered);
         if(blankIndex == numBlanks - 1) {
             Intent oldIntent = getIntent();
