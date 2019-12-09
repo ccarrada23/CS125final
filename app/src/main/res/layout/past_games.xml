@@ -18,14 +18,14 @@
         <LinearLayout
             android:id="@+id/pastGamesList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="600dp"
             android:orientation="vertical"></LinearLayout>
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/exit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Exit" />
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exit" />
+    </LinearLayout>
 
 </LinearLayout>

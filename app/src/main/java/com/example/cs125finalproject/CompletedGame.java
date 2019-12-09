@@ -43,8 +43,6 @@ public class CompletedGame extends AppCompatActivity {
     }
 
     public void saveExit() {
-        //LinearLayout pGroup = findViewById(R.id.pastGamesGroup);
-        //LinearLayout pList = findViewById(R.id.pastGamesList);
         Intent intent = new Intent(this, PastGames.class);
         AlertDialog.Builder text = new AlertDialog.Builder(this);
         text.setTitle("Name your Mad Lib");
@@ -58,12 +56,8 @@ public class CompletedGame extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String gameName = input.getText().toString().trim();
-                /**View pChunk = getLayoutInflater().inflate(R.layout.past_games_info, pGroup, false);
-                TextView name = pChunk.findViewById(R.id.gameName);
-                name.setText(gameName);
-                Button open = pChunk.findViewById(R.id.openGame);
-                pList.addView(pChunk);**/
                 intent.putExtra("gameName", gameName);
+                intent.putExtra("completedLib", completed);
                 startActivity(intent);
             }
         });
