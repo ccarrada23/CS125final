@@ -3,8 +3,10 @@ package com.example.cs125finalproject;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -41,7 +43,9 @@ public class CompletedGame extends AppCompatActivity {
     }
 
     public void saveExit() {
-        Intent intent = new Intent(this, MainActivity.class);
+        //LinearLayout pGroup = findViewById(R.id.pastGamesGroup);
+        //LinearLayout pList = findViewById(R.id.pastGamesList);
+        Intent intent = new Intent(this, PastGames.class);
         AlertDialog.Builder text = new AlertDialog.Builder(this);
         text.setTitle("Name your Mad Lib");
 
@@ -54,6 +58,12 @@ public class CompletedGame extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String gameName = input.getText().toString().trim();
+                /**View pChunk = getLayoutInflater().inflate(R.layout.past_games_info, pGroup, false);
+                TextView name = pChunk.findViewById(R.id.gameName);
+                name.setText(gameName);
+                Button open = pChunk.findViewById(R.id.openGame);
+                pList.addView(pChunk);**/
+                intent.putExtra("gameName", gameName);
                 startActivity(intent);
             }
         });

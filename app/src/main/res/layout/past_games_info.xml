@@ -8,17 +8,20 @@
 
     <TextView
         android:id="@+id/gameName"
-        android:layout_width="272dp"
-        android:layout_height="50dp"
+        android:layout_width="237dp"
+        android:layout_height="56dp"
         android:textSize="32sp"
+        app:layout_constraintEnd_toStartOf="@+id/openGame"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/startGame"
-        android:layout_width="139dp"
-        android:layout_height="50dp"
-        android:text="Start Game"
+        android:id="@+id/openGame"
+        android:layout_width="175dp"
+        android:layout_height="56dp"
+        android:text="Open"
+        app:layout_constraintBaseline_toBaselineOf="@+id/gameName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/gameName"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
