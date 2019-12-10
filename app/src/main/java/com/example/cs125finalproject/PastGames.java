@@ -28,16 +28,17 @@ public class PastGames extends AppCompatActivity {
             name.setText(gName);
             String completedLib = intent.getStringExtra("completedLib");
             Button open = pChunk.findViewById(R.id.openGame);
-            open.setOnClickListener(unused -> displayGame(completedLib));
+            open.setOnClickListener(unused -> displayGame(gName, completedLib));
             pList.addView(pChunk);
         }
         Button exit = findViewById(R.id.exit);
         exit.setOnClickListener(unused -> exit());
     }
 
-    public void displayGame(String completedLib) {
+    public void displayGame(String name, String completedLib) {
         AlertDialog.Builder text = new AlertDialog.Builder(this);
-        text.setTitle(completedLib);
+        text.setTitle(name);
+        text.setMessage(completedLib);
 
         text.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
